@@ -1,6 +1,7 @@
 {
-  "version": 1,
+  "name": "mybot",
+  "version": 2,
   "env": {
-    "BOT_TOKEN": "NTU2MTQwMDMxNTgxMDkzODg5.D21cvA.z4_xIibyFWp-0WZ9VhfgmELYgIM"
+    "NODE_ENV": "production"
   }
 }
