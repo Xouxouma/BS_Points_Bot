@@ -13,7 +13,8 @@ module.exports = (client, scores, message) => {
       case 'b!ping':
         return message.reply('Pong!');
         break
-      case '@bot':
+      case 'b!pts':
+      case 'b!add':
       case '@BS_Points':
       case 'b!':
       case 'b!points':
@@ -23,14 +24,14 @@ module.exports = (client, scores, message) => {
       case 'b!create':
         return generateRanking(message,scores)
         break
-      case 'b!showAll':
+      case 'b!showall':
       case 'b!all':
         return showAll(message,scores)
         break
       case 'b!show':
       case 'b!leaderboard':
       case 'b!ranking':
-      case 'whoisthebest':
+      case 'b!whoisthebest':
         message.reply(leaderboard(message,scores))
         break
       case 'b!delete':

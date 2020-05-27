@@ -18,32 +18,36 @@ function addAmountOfPointsToSb(points, users, member, message){
 }
 
 module.exports = (guildId, scores, message,words) => {
-  var getRanking = require('./getRanking')
+    if (message.member.roles.find(r => r.name === "Admin")) {
+        var getRanking = require('./getRanking')
 
-  var points = parseInt(words[2])
+        var points = parseInt(words[2])
 
-  if (isNaN(points))
-    return message.reply("Error! Mention how much points you want to add to mentioned people.\nTry : b!points <ranking> <points à ajouter> <@personne1> <@personne2> ... <@personne n>")
+        if (isNaN(points))
+            return message.reply("Error! Mention how much points you want to add to mentioned people.\nTry : b!points <ranking> <points à ajouter> <@personne1> <@personne2> ... <@personne n>")
 
-  var answer = 'You have granted '+ points + ' points to: '
-  // fs.createReadStream(generateFilePath(guildId))
+        var answer = 'You have granted ' + points + ' points to: '
+        // fs.createReadStream(generateFilePath(guildId))
 
-  if (scores.get(guildId) == undefined)
-    scores.set(guildId, new Map())
-  events = scores.get(guildId)
+        if (scores.get(guildId) == undefined)
+            scores.set(guildId, new Map())
+        events = scores.get(guildId)
 
-  if (events.get(words[1]) == undefined)
-    return message.reply("Error! You need to mention an existing ranking!\nTry : b!points <ranking> <points à ajouter> <@personne1> <@personne2> ... <@personne n>")
+        if (events.get(words[1]) == undefined)
+            return message.reply("Error! You need to mention an existing ranking!\nTry : b!points <ranking> <points à ajouter> <@personne1> <@personne2> ... <@personne n>")
 
-  if (events.get(words[1]) == undefined)
-    events.set(words[1], new Map())
-  users = events.get(words[1])
+        if (events.get(words[1]) == undefined)
+            events.set(words[1], new Map())
+        users = events.get(words[1])
 
-  if (message.mentions.members.size == 0)
-    return message.reply("Error! You need to mention people to give them points!\nTry : b!points <ranking> <points à ajouter> <@personne1> <@personne2> ... <@personne n>")
+        if (message.mentions.members.size == 0)
+            return message.reply("Error! You need to mention people to give them points!\nTry : b!points <ranking> <points à ajouter> <@personne1> <@personne2> ... <@personne n>")
 
-    message.mentions.members.forEach(member => {
-      answer = answer+addAmountOfPointsToSb(points, users, member, message)
-    })
-    message.reply(answer)
+        message.mentions.members.forEach(member => {
+            answer = answer + addAmountOfPointsToSb(points, users, member, message)
+        })
+        message.reply(answer)
+    }
+    else
+        return message.reply("Only an Admin can give points! You can't fool probot that easily :P")
 }
