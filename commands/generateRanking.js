@@ -1,3 +1,5 @@
+const save = require('../save')
+
 function generateFilePath(message) {
   guildId = message.guild.id
   ranking = message.content.split(" ")[1]

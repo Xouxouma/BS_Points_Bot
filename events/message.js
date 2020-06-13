@@ -4,6 +4,8 @@ var showAll = require('../commands/showAll')
 var leaderboard = require('../commands/leaderboard')
 var deleteRanking = require('../commands/deleteRanking')
 var resetRanking = require('../commands/resetRanking')
+var read = require('../read')
+var save = require('../save')
 
 module.exports = (client, scores, message) => {
   if (message.content.startsWith('b!')) {
@@ -15,7 +17,6 @@ module.exports = (client, scores, message) => {
         break
       case 'b!pts':
       case 'b!add':
-      case '@BS_Points':
       case 'b!':
       case 'b!points':
         return addPoints(message.guild.id, scores, message, words);
@@ -42,10 +43,16 @@ module.exports = (client, scores, message) => {
       case 'b!reset':
         return resetRanking(message,scores)
         break
+      case 'b!read':
+        scores = read()
+        break
+      case 'b!save':
+        save(scores)
+        break
       default:
         message.reply("Sorry there's no help section cause it's a lazy homemade implementation ! Ask your leader.\n\nAfterall, here is a clue, try: b!points <ranking-name> <amount-of-points> <member 1> ... <member N>")
         break;
     }
-
+    save(scores);
   }
 }
