@@ -1,6 +1,6 @@
 // const csv = require('csv-parser');
 // const fs = require('fs');
-
+const save = require('../save')
 
 function generateFilePath(message) {
   guildId = message.guild.id
@@ -46,6 +46,7 @@ module.exports = (guildId, scores, message,words) => {
         message.mentions.members.forEach(member => {
             answer = answer + addAmountOfPointsToSb(points, users, member, message)
         })
+        save(scores)
         message.reply(answer)
     }
     else

@@ -31,6 +31,8 @@ module.exports = (message,scores) => {
     return message.reply("Error! Event already existing within this discord server.\nTry b!create <event-name>")
 
   events.set(eventName, new Map())
+
+  save(scores)
   if (events.get(eventName) == undefined)
     return message.reply("Error! Something went wrong cause I am badly coded. MB Sorry.\nTry b!create <event-name>")
 

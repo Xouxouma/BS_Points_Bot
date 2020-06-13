@@ -43,9 +43,9 @@ module.exports = (client, scores, message) => {
       case 'b!reset':
         return resetRanking(message,scores)
         break
-      case 'b!read':
-        scores = read()
-        break
+      // case 'b!read':
+      //   scores = read()
+      //   break
       case 'b!save':
         save(scores)
         break

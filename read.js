@@ -5,7 +5,20 @@ const save = require('./save')
 const addPoints = require('./commands/addPoints')
 
 module.exports = (msg) => {
-    var data = fs.readFileSync(data_file)
+
+    var scores = new Map()
+
+
+    try {
+        var data = fs.readFileSync(data_file)
+    } catch (err) {
+        if (err.code === 'ENOENT') {
+            console.log('no data: create new');
+            return scores;
+        } else {
+            throw err;
+        }
+    }
     console.log("data = " + data)
     var parsed = JSON.parse(data)
     console.log("parsed = " + parsed)
@@ -13,7 +26,7 @@ module.exports = (msg) => {
     var guilds = Object.keys(parsed);
     console.log("guilds = " + guilds)
 
-    var scores = new Map()
+
 
     for( var i = 0,length = guilds.length; i < length; i++ ) {
         let guild = parsed[ guilds[ i ] ]

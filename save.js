@@ -62,6 +62,7 @@ function scoresToJson(map)
 }
 
 module.exports = scores => {
+    console.log("save")
     var data = scoresToJson(scores)
 
     console.log(data)
