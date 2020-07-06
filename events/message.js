@@ -13,8 +13,8 @@ module.exports = (client, scores, message) => {
     switch (words[0])
     {
       case 'b!ping':
-        var ping = Date.now() - message.createdTimestamp + " ms";
-        message.channel.sendMessage("Pong... `" + `${ping}` + "ms` !");
+        var ping = Date.now() - message.createdTimestamp;
+        message.reply("Pong... `" + `${ping}` + "ms` !");
         break
       case 'b!pts':
       case 'b!add':
