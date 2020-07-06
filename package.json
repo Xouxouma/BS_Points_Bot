@@ -5,11 +5,15 @@
   "scripts": {
     "now-start": "node index.js",
     "start": "node index.js"
-    },
+  },
   "dependencies": {
     "csv-parser": "^2.2.0",
     "discord.js": "^11.4.2",
-    "dotenv": "^7.0.0"
+    "dotenv": "^7.0.0",
+    "fs-extra": "^9.0.1",
+    "got": "^11.3.0",
+    "gson": "^0.1.5",
+    "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
