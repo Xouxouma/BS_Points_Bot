@@ -1,14 +1,15 @@
-
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const data_file = './db/scores_data.json'
 const fs = require('fs')
 const save = require('./save')
 const addPoints = require('./commands/addPoints')
 
-module.exports = (msg) => {
 
+function createScores(data)
+{
     var scores = new Map()
 
-
+/*
     try {
         var data = fs.readFileSync(data_file)
     } catch (err) {
@@ -19,14 +20,13 @@ module.exports = (msg) => {
             throw err;
         }
     }
+*/
     console.log("data = " + data)
     var parsed = JSON.parse(data)
     console.log("parsed = " + parsed)
 
     var guilds = Object.keys(parsed);
     console.log("guilds = " + guilds)
-
-
 
     for( var i = 0,length = guilds.length; i < length; i++ ) {
         let guild = parsed[ guilds[ i ] ]
@@ -67,4 +67,18 @@ module.exports = (msg) => {
     console.log("scores loaded")
     // save(scores)
     return scores
+}
+
+
+module.exports = () => {
+
+    let req = new XMLHttpRequest()
+
+    req.open("GET", process.env.JSONBIN_URL + "/latest", false);
+    req.setRequestHeader("secret-key", process.env.JSONBIN_SECRET_KEY);
+    req.send();
+
+    console.log("req.responseText " + req.responseText)
+    return createScores(req.responseText)
+
 }

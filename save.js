@@ -1,3 +1,4 @@
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const fs = require('fs')
 const GSON = require('gson')
 const data_file = './db/scores_data.json'
@@ -66,7 +67,22 @@ module.exports = scores => {
     var data = scoresToJson(scores)
 
     console.log(data)
-    fs.writeFile(data_file, data, finished)
+
+    let req = new XMLHttpRequest()
+
+    req.onreadystatechange = () => {
+        if (req.readyState == req.DONE) {
+            console.log("PUT finished : " + req.responseText)
+        }
+    }
+
+    req.open("PUT", process.env.JSONBIN_URL, true);
+    req.setRequestHeader("secret-key", process.env.JSONBIN_SECRET_KEY);
+    req.setRequestHeader("Content-Type", "application/json");
+    req.setRequestHeader("versioning", false);
+    req.send(data);
+
+    // fs.writeFile(data_file, data, finished)
 
     // var scores2 = { name: "John", age: 30, city: "New York" };
 /*    var data = JSON.stringify(scores, replacer)
@@ -75,7 +91,7 @@ module.exports = scores => {
     console.log("data json" + data)
     console.log("data gson" + GSON.stringify(scores, replacer))*/
 
-    function finished(err) {
-        console.log("All saved.")
-    }
+    // function finished(err) {
+    //     console.log("All saved.")
+    // }
 }

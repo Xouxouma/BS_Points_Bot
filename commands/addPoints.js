@@ -9,12 +9,12 @@ function generateFilePath(message) {
 }
 
 function addAmountOfPointsToSb(points, users, member, message){
-  memberId = member
-  if (users.get(memberId) == undefined)
-    users.set(memberId,0)
-  prevPoints = users.get(memberId)
-  users.set(memberId,prevPoints+points)
-  return member.toString()+" ("+ users.get(memberId)+ ")\t"
+    memberId = "<@"+member.id+">"
+    if (users.get(memberId) == undefined)
+        users.set(memberId,0)
+    prevPoints = users.get(memberId)
+    users.set(memberId,prevPoints+points)
+    return member.toString()+" ("+ users.get(memberId)+ ")\t"
 }
 
 module.exports = (guildId, scores, message,words) => {
