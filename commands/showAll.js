@@ -9,11 +9,10 @@ module.exports = (message, scores) => {
     return message.reply("No ranking defined yet on this server.")
   if (rankings.size == 0)
     return message.reply("No ranking found on this server.")
-  console.log("scores keys" + Object.keys(scores))
-  rankings.forEach(ranking => {
-    console.log("ranking key" + ranking.key)
-      // let rankingsName = Object.keys(guild)
-      answer += "Ranking : " + ranking.key + "\n" + getRanking(ranking)
-})
-  return message.reply("there you go :\n"+answer)
+
+  rankings.forEach((ranking, rankingName) => {
+      answer += rankingName + ":\n" + getRanking(ranking)
+  })
+
+  return message.reply("there you go :\n\n"+answer)
 }
