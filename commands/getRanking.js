@@ -5,7 +5,7 @@ module.exports = (ranking) => {
   if (ranking.size == 0)
     return answer +"No member have points on this ranking yet.\n"
   let sortedRanking = new Map([...ranking.entries()].sort((a, b) => parseFloat(b[1]) - parseFloat(a[1])));
-  var rank = 1
+  let rank = 1
   sortedRanking.forEach(function(val,key) {
     answer += rank + "° - " + key + " : "+val+"\n"
     rank += 1
