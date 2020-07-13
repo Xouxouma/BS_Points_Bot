@@ -7,6 +7,7 @@ var resetRanking = require('../commands/resetRanking')
 var read = require('../read')
 var save = require('../save')
 var linkRankings = require('../commands/linkRankings')
+var getPoints = require('../commands/getPoints')
 
 module.exports = (client, scores, rankings_links, message) => {
   if (message.content.startsWith('b!')) {
@@ -17,10 +18,7 @@ module.exports = (client, scores, rankings_links, message) => {
         var ping = Date.now() - message.createdTimestamp;
         message.reply("Pong... `" + `${ping}` + " ms` !");
         break
-      case 'b!pts':
       case 'b!add':
-      case 'b!':
-      case 'b!points':
         return addPoints(message.guild.id, scores, message, words, rankings_links);
         break
       case'b!new':
@@ -53,8 +51,19 @@ module.exports = (client, scores, rankings_links, message) => {
         break
       case 'b!link':
         return linkRankings(message, scores, rankings_links);
+        break
+      case 'b!rank':
+      case 'b!Rank':
+      case 'b!points':
+      case 'b!Points':
+      case 'b!AmIGood':
+      case 'b!amigood':
+        return getPoints(message.guild.id, message, scores)
+        break
       default:
-        message.reply("Sorry there's no help section cause it's a lazy homemade implementation ! Ask your leader.\n\nAfterall, here is a clue, try: b!points <ranking-name> <amount-of-points> <member 1> ... <member N>")
+        message.reply("Looks like you're struggling, the only public commands are :\n" +
+            "\t- b!show RANKINGNAME : show the ranking\n" +
+            "\t- b!points : show your scores in all rankings")
         break;
     }
     save(scores);

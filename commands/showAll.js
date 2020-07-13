@@ -11,7 +11,7 @@ module.exports = (message, scores) => {
     return message.reply("No ranking found on this server.")
 
   rankings.forEach((ranking, rankingName) => {
-      answer += rankingName + ":\n" + getRanking(ranking)
+      answer += "**" + rankingName + "**:\n\n" + getRanking(ranking)+ "\n\n"
   })
 
   return message.reply("there you go :\n\n"+answer)
