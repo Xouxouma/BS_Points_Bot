@@ -4,7 +4,7 @@ module.exports = (ranking) => {
     return "Error! trying to access an undefined ranking cause I'm not well coded."
   if (ranking.size == 0)
     return answer +"No member have points on this ranking yet.\n"
-  let sortedRanking = new Map([...ranking.entries()].sort((a, b) => parseFloat(b) - parseFloat(a)));
+  let sortedRanking = new Map([...ranking.entries()].sort((a, b) => parseFloat(b[1]) - parseFloat(a[1])));
   sortedRanking.forEach(function(val,key) { answer += key+" ("+val+")\n"})
 
   return answer
