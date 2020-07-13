@@ -33,7 +33,7 @@ module.exports = (client, scores, rankings_links, message) => {
       case 'b!leaderboard':
       case 'b!ranking':
       case 'b!whoisthebest':
-        message.reply(leaderboard(message,scores))
+        message.channel.send(leaderboard(message,scores))
         break
       case 'b!delete':
       case 'b!del':

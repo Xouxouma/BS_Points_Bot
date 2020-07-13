@@ -7,7 +7,8 @@ module.exports = (ranking) => {
   let sortedRanking = new Map([...ranking.entries()].sort((a, b) => parseFloat(b[1]) - parseFloat(a[1])));
   let rank = 1
   sortedRanking.forEach(function(val,key) {
-    answer += rank + "° - " + key + " : "+val+"\n"
+    let fill_char = (rank >= 10) ? "" : " "
+    answer += rank + "° " + fill_char + "- \t" + key + " : "+val+"\n"
     rank += 1
   })
 
