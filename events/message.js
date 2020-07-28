@@ -19,7 +19,7 @@ module.exports = (client, scores, rankings_links, message) => {
         message.reply("Pong... `" + `${ping}` + " ms` !");
         break
       case 'b!add':
-        return addPoints(message.guild.id, scores, message, words, rankings_links, client);
+        return addPoints(message.guild.id, scores, message, words, rankings_links);
         break
       case'b!new':
       case 'b!create':
@@ -27,13 +27,13 @@ module.exports = (client, scores, rankings_links, message) => {
         break
       case 'b!showall':
       case 'b!all':
-        return showAll(message,scores, client)
+        return showAll(message,scores)
         break
       case 'b!show':
       case 'b!leaderboard':
       case 'b!ranking':
       case 'b!whoisthebest':
-        return leaderboard(message,scores, client)
+        return leaderboard(message,scores)
         break
       case 'b!delete':
       case 'b!del':

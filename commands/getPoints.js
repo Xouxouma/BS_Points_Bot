@@ -22,7 +22,7 @@ module.exports = (guildId, message, scores) => {
         scores.set(guildId, new Map())
     let rankings = scores.get(guildId)
 
-    answer += getMemberPoints(rankings, author)
+    answer = getMemberPoints(rankings, author)
     message.channel.send({embed: {
             title: author,
             description: answer
