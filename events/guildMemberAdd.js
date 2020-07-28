@@ -1,3 +1,3 @@
 module.exports = (client, member) => {
-  member.send(`Welcome on our Discord server from your leader's bot ! <3`)
+  member.send(`Welcome on our Discord server from probot ! <3`)
 }

@@ -12,14 +12,14 @@ var getPoints = require('../commands/getPoints')
 module.exports = (client, scores, rankings_links, message) => {
   if (message.content.startsWith('b!')) {
     var words = message.content.split(' ');
-    switch (words[0])
+    switch (words[0].toLowerCase())
     {
       case 'b!ping':
         var ping = Date.now() - message.createdTimestamp;
         message.reply("Pong... `" + `${ping}` + " ms` !");
         break
       case 'b!add':
-        return addPoints(message.guild.id, scores, message, words, rankings_links);
+        return addPoints(message.guild.id, scores, message, words, rankings_links, client);
         break
       case'b!new':
       case 'b!create':
@@ -27,13 +27,13 @@ module.exports = (client, scores, rankings_links, message) => {
         break
       case 'b!showall':
       case 'b!all':
-        return showAll(message,scores)
+        return showAll(message,scores, client)
         break
       case 'b!show':
       case 'b!leaderboard':
       case 'b!ranking':
       case 'b!whoisthebest':
-        message.channel.send(leaderboard(message,scores))
+        return leaderboard(message,scores, client)
         break
       case 'b!delete':
       case 'b!del':
@@ -53,11 +53,9 @@ module.exports = (client, scores, rankings_links, message) => {
         return linkRankings(message, scores, rankings_links);
         break
       case 'b!rank':
-      case 'b!Rank':
       case 'b!points':
-      case 'b!Points':
-      case 'b!AmIGood':
       case 'b!amigood':
+      case 'b!me':
         return getPoints(message.guild.id, message, scores)
         break
       default:

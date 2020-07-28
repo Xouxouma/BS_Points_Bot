@@ -12,5 +12,11 @@ module.exports = (message,scores) => {
   ranking = rankings.get(rankingName)
   if (ranking==undefined)
     return "Error! The ranking " + rankingName + " doesn't exist on this server.\nTry: b!ranking <ranking-name>"
-  return "here's the leaderboard you've asked for:\n\n**" + rankingName+ "**:\n\n" + getRanking(ranking);
+
+  answer = getRanking(ranking)
+  message.channel.send({embed: {
+      title: rankingName,
+      description: answer
+    }})
+  // return "here's the leaderboard you've asked for:\n\n**" + rankingName+ "**:\n\n" + getRanking(ranking);
 }

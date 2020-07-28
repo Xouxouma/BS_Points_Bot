@@ -27,7 +27,7 @@ function addAmountOfPointsToSb(points, users, member){
         users.set(memberId,0)
     let prevPoints = users.get(memberId)
     users.set(memberId,prevPoints+points)
-    return member.toString()+" ("+ users.get(memberId)+ ")\t"
+    return member.toString()+" ("+ users.get(memberId)+ ")\n"
 }
 
 module.exports = (guildId, scores, message,words, rankings_links) => {
@@ -55,10 +55,13 @@ module.exports = (guildId, scores, message,words, rankings_links) => {
             return message.reply("Error! You need to mention people to give them points!\nTry : b!points <ranking> <points à ajouter> <@personne1> <@personne2> ... <@personne n>")
 
         message.mentions.members.forEach(member => {
-            answer = answer + addPointsToRanking(words[1], points, events, member, guild_rankings_links)
+            answer = answer + '\n' + addPointsToRanking(words[1], points, events, member, guild_rankings_links)
         })
         save(scores)
-        message.reply(answer)
+        message.channel.send({embed: {
+                title: 'Points added in ' + words[1],
+                description: answer
+            }})
     }
     else
         return message.reply("Only an Admin can give points! You can't fool probot that easily :P")
