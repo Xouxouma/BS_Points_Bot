@@ -12,7 +12,7 @@ var getPoints = require('../commands/getPoints')
 module.exports = (client, scores, rankings_links, message) => {
   if (message.content.startsWith('b!')) {
     var words = message.content.split(' ');
-    switch (words[0])
+    switch (words[0].toLowerCase())
     {
       case 'b!ping':
         var ping = Date.now() - message.createdTimestamp;
