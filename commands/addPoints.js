@@ -37,7 +37,7 @@ module.exports = (guildId, scores, message,words, rankings_links) => {
         if (isNaN(points))
             return message.reply("Error! Mention how much points you want to add to mentioned people.\nTry : b!points <ranking> <points à ajouter> <@personne1> <@personne2> ... <@personne n>")
 
-        let answer = 'You have granted ' + points + ' points to: '
+        let answer = 'You have granted ' + points + ' points to:\n'
         // fs.createReadStream(generateFilePath(guildId))
 
         if (scores.get(guildId) == undefined)
@@ -55,7 +55,7 @@ module.exports = (guildId, scores, message,words, rankings_links) => {
             return message.reply("Error! You need to mention people to give them points!\nTry : b!points <ranking> <points à ajouter> <@personne1> <@personne2> ... <@personne n>")
 
         message.mentions.members.forEach(member => {
-            answer = answer + '\n' + addPointsToRanking(words[1], points, events, member, guild_rankings_links)
+            answer = answer + addPointsToRanking(words[1], points, events, member, guild_rankings_links)
         })
         save(scores)
         message.channel.send({embed: {
