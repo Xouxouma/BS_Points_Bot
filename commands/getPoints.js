@@ -24,7 +24,7 @@ module.exports = (guildId, message, scores) => {
 
     answer = getMemberPoints(rankings, author)
     message.channel.send({embed: {
-            title: author,
-            description: answer
+            description: "<@"+author.id+">\n\n" + answer
         }})
+     return answer
 }
