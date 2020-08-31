@@ -21,7 +21,11 @@ module.exports = (message, member, memberPts, rankings_titles, guildId, rankingN
     console.log("member = " + member.toString() + " // " + message.guild.members.get(member.id).nickname)
     console.log("rankingName = " + rankingName)
 
+    if (rankings_titles.get(guildId) == undefined)
+        return
     let rankings_titles_guild = rankings_titles.get(guildId)
+    if (rankings_titles_guild.get(rankingName) == undefined)
+        return
     let ranking_titles = rankings_titles_guild.get(rankingName)
 
     console.log("rankings_titles= " + rankings_titles)
