@@ -1,0 +1,39 @@
+
+async function addRole(message, member, title) {
+    try {
+        if (! member.roles.has(title))
+        {
+            console.log("0 - Role given : " + title + " to " + member.id)
+            await member.addRole(title)
+            console.log("1 - Role given : " + title + " to " + member.id)
+            message.channel.send("Congrats <@" + member.id + "> for your new title : " + message.guild.roles.get(title).name + "!")
+        }
+    }
+    catch (exception)
+    {
+        return exception
+    }
+}
+
+module.exports = (message, member, memberPts, rankings_titles, guildId, rankingName) => {
+    console.log("Check Titles")
+    console.log("guildId = " + guildId)
+    console.log("member = " + member.toString() + " // " + message.guild.members.get(member.id).nickname)
+    console.log("rankingName = " + rankingName)
+
+    let rankings_titles_guild = rankings_titles.get(guildId)
+    let ranking_titles = rankings_titles_guild.get(rankingName)
+
+    console.log("rankings_titles= " + rankings_titles)
+    ranking_titles.forEach((nbpts, title) => {
+        console.log("----\ntitle = " + message.guild.roles.get(title).name)
+        // let nbpts = rankings_titles.get(title)
+        console.log("nbpts = " + nbpts)
+        if (memberPts >= nbpts)
+        {
+            console.log("Role will be given : " + title + " to " + member.id)
+            addRole(message, member, title)
+        }
+        else console.log("Role not given, not enough points")
+    })
+}

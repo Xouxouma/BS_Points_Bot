@@ -8,8 +8,13 @@ var read = require('../read')
 var save = require('../save')
 var linkRankings = require('../commands/linkRankings')
 var getPoints = require('../commands/getPoints')
+var updateTitles = require('../commands/updateTitles')
+var addTitle = require('../commands/addTitle')
+var readTitles = require('../data_persistency/readTitles')
+var showTitles = require('../commands/showTitles')
+var deleteTitle = require('../commands/deleteTitle')
 
-module.exports = (client, scores, rankings_links, message) => {
+module.exports = (client, scores, rankings_links, rankings_titles, message) => {
   if (message.content.startsWith('b!')) {
     var words = message.content.split(' ');
     switch (words[0].toLowerCase())
@@ -19,7 +24,7 @@ module.exports = (client, scores, rankings_links, message) => {
         message.reply("Pong... `" + `${ping}` + " ms` !");
         break
       case 'b!add':
-        return addPoints(message.guild.id, scores, message, words, rankings_links);
+        return addPoints(message.guild.id, scores, message, words, rankings_links, rankings_titles);
         break
       case'b!new':
       case 'b!create':
@@ -58,12 +63,28 @@ module.exports = (client, scores, rankings_links, message) => {
       case 'b!me':
         return getPoints(message.guild.id, message, scores)
         break
+      case 'b!updatetitles':
+        return updateTitles(message, scores, rankings_titles)
+        break
+      case 'b!addtitle':
+        return addTitle(message, scores, message.mentions.roles.first(), words[1], words[2], rankings_titles)
+        break
+      case 'b!readtitle':
+        return readTitles()
+        break
+      case 'b!titles':
+      case 'b!showtitles':
+        return showTitles(message, rankings_titles)
+        break
+      case 'b!deletetitle':
+        return deleteTitle(message, message.mentions.roles.first(), rankings_titles)
+        break
       default:
         message.reply("Looks like you're struggling, the only public commands are :\n" +
             "\t- b!show RANKINGNAME : show the ranking\n" +
             "\t- b!points : show your scores in all rankings")
         break;
     }
-    save(scores);
+    // save(scores);
   }
 }

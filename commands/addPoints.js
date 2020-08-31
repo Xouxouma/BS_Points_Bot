@@ -1,5 +1,6 @@
 // const csv = require('csv-parser');
 // const fs = require('fs');
+const checkTitles = require('../commands/util/checkTitles')
 const save = require('../save')
 
 function generateFilePath(message) {
@@ -8,7 +9,7 @@ function generateFilePath(message) {
   return "db/"+guildId+"/"+ranking
 }
 
-function addPointsToRanking(ranking, points, events, member, guild_rankings_links) {
+function addPointsToRanking(message, ranking, points, events, member, guild_rankings_links, rankings_titles) {
     if (events.get(ranking) == undefined)
         events.set(ranking, new Map())
     let users = events.get(ranking)
@@ -16,21 +17,23 @@ function addPointsToRanking(ranking, points, events, member, guild_rankings_link
     let parentRanking = guild_rankings_links.get(ranking)
     if (parentRanking != undefined)
     {
-        addPointsToRanking(parentRanking, points, events, member, guild_rankings_links)
+        addPointsToRanking(message,parentRanking, points, events, member, guild_rankings_links, rankings_titles)
     }
-    return addAmountOfPointsToSb(points, users, member)
+    return addAmountOfPointsToSb(message, points, users, member, rankings_titles, ranking)
 }
 
-function addAmountOfPointsToSb(points, users, member){
+function addAmountOfPointsToSb(message, points, users, member, ranking_titles, rankingName){
     let memberId = "<@"+member.id+">"
     if (users.get(memberId) == undefined)
         users.set(memberId,0)
     let prevPoints = users.get(memberId)
     users.set(memberId,prevPoints+points)
-    return member.toString()+" ("+ users.get(memberId)+ ")\n"
+    let answer = member.toString()+" ("+ users.get(memberId)+ ")\n"
+    checkTitles(message, member, users.get(memberId), ranking_titles, "" + member.guild.id, rankingName)
+    return answer
 }
 
-module.exports = (guildId, scores, message,words, rankings_links) => {
+module.exports = (guildId, scores, message,words, rankings_links, rankings_titles) => {
     if (message.member.roles.find(r => r.name === "Admin")) {
         let points = parseInt(words[2])
 
@@ -55,7 +58,7 @@ module.exports = (guildId, scores, message,words, rankings_links) => {
             return message.reply("Error! You need to mention people to give them points!\nTry : b!points <ranking> <points à ajouter> <@personne1> <@personne2> ... <@personne n>")
 
         message.mentions.members.forEach(member => {
-            answer = answer + addPointsToRanking(words[1], points, events, member, guild_rankings_links)
+            answer = answer + addPointsToRanking(message, words[1], points, events, member, guild_rankings_links, rankings_titles)
         })
         save(scores)
         message.channel.send({embed: {
