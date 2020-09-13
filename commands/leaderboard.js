@@ -13,10 +13,13 @@ module.exports = (message,scores) => {
   if (ranking==undefined)
     return "Error! The ranking " + rankingName + " doesn't exist on this server.\nTry: b!ranking <ranking-name>"
 
-  answer = getRanking(ranking)
-  message.channel.send({embed: {
-      title: rankingName,
-      description: answer
-    }})
+  let answers = getRanking(ranking)
+  for (let i = 0; i < answers.length; i++)
+  {
+    message.channel.send({embed: {
+        title: rankingName + " (" + i + " / " + answers.length + ")",
+        description: answers[i]
+      }})
+  }
   // return "here's the leaderboard you've asked for:\n\n**" + rankingName+ "**:\n\n" + getRanking(ranking);
 }

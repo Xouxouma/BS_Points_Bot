@@ -34,7 +34,7 @@ function addAmountOfPointsToSb(message, points, users, member, ranking_titles, r
 }
 
 module.exports = (guildId, scores, message,words, rankings_links, rankings_titles) => {
-    if (message.member.roles.find(r => r.name === "Admin")) {
+    if (message.member.roles.find(r => r.name === "Admin" || r.name === "b! point giver")) {
         let points = parseInt(words[2])
 
         if (isNaN(points))
@@ -67,5 +67,5 @@ module.exports = (guildId, scores, message,words, rankings_links, rankings_title
             }})
     }
     else
-        return message.reply("Only an Admin can give points! You can't fool probot that easily :P")
+        return message.reply("Only an Admin or a 'b! point giver' can give points! You can't fool probot that easily :P")
 }
