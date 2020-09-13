@@ -17,7 +17,7 @@ module.exports = (message,scores) => {
   for (let i = 0; i < answers.length; i++)
   {
     message.channel.send({embed: {
-        title: rankingName + " (" + i + " / " + answers.length + ")",
+        title: rankingName + " (" + (i+1) + " / " + answers.length + ")",
         description: answers[i]
       }})
   }

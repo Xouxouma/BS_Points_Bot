@@ -21,9 +21,8 @@ module.exports = (ranking) => {
     rank += 1
     if (answer.length > 1900)
     {
-      answers.push(... answer)
+      answers.push(JSON.parse(JSON.stringify(answer)))
       answer = ""
-      console.log("Answers = " + answers + " answer 0 = " + answer[0]);
     }
 
   })
