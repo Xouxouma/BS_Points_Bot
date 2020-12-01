@@ -15,7 +15,7 @@ var showTitles = require('../commands/showTitles')
 var deleteTitle = require('../commands/deleteTitle')
 
 module.exports = (client, scores, rankings_links, rankings_titles, message) => {
-  if (message.content.startsWith('b!')) {
+  if (message.content.startsWith('b!') ||message.content.startsWith('B!')) {
     var words = message.content.split(' ');
     switch (words[0].toLowerCase())
     {
