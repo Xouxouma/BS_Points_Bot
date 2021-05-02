@@ -21,7 +21,7 @@ fs.readdir('./events/', (err, files) => {
   files.forEach(file => {
     const eventHandler = require(`./events/${file}`)
     const eventName = file.split('.')[0]
-    client.on(eventName, async (...args) => eventHandler(client, scores, rankings_links, rankings_titles, ...args)).catch(console.log);
+    client.on(eventName, async (...args) => eventHandler(client, scores, rankings_links, rankings_titles, ...args).catch(console.log));
   })
 })
 
