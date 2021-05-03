@@ -1,7 +1,7 @@
 
 async function addRole(message, member, title) {
     try {
-        if (! member.roles.has(title))
+        if (message.guild.member(member.id) && member.roles.has(title))
         {
             console.log("0 - Role given : " + title + " to " + member.id)
             await member.addRole(title)
@@ -11,6 +11,7 @@ async function addRole(message, member, title) {
     }
     catch (exception)
     {
+        console.log("addRole bugged : member : " + member + " title : " + title)
         return exception
     }
 }
