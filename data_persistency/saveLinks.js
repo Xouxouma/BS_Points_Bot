@@ -43,7 +43,7 @@ function guildScoresToJson(map)
             value = entry[1];
         res += '\"' + key + '\": ['
         for (let i = 0; i < value.length ; i++) {
-            res += value[i] + ", ";
+            res += '\"' + value[i] + '\", ';
         }
         res = res.substring(0,res.length-2) + ']'
         res +='\n';
