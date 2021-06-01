@@ -24,7 +24,8 @@ function rankingScoresToJson(map)
     for (var entry of map.entries()) {
         var key = entry[0],
             value = entry[1];
-        res += '\"' + key + '\":' + value +',\n';
+        for (let i = 0; i < value.length ; i++)
+            res += '\"' + key + '\":' + value[i] +',\n';
     }
     console.log("ranking map length : " + map.size)
     if (map.size > 0)
@@ -40,7 +41,9 @@ function guildScoresToJson(map)
     for (var entry of map.entries()) {
         var key = entry[0],
             value = entry[1];
-        res += '\"' + key + '\":\"' + value +'\",\n';
+        for (let i = 0; i < value.length ; i++) {
+            res += '\"' + key + '\":\"' + value[i] + '\",\n';
+        }
     }
     res = res.substring(0,res.length-2) + '\n'
     res += '}\n';

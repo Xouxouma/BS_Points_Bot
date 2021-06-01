@@ -47,7 +47,7 @@ function createLinks(data)
             if (scores_guild.get(rankingName) == undefined) {
                 scores_guild.set(rankingName, [])
             }
-            scores_guild.get(rankingName.push(parentRanking))
+            scores_guild.get(rankingName).push(parentRanking)
         }
     }
     console.log("END readRankingLinks")
