@@ -44,7 +44,10 @@ function createLinks(data)
 
             let rankingName = rankings[j]
             console.log("rankingName = " + rankingName + " , parentRanking = " + parentRanking)
-            scores_guild.set(rankingName, parentRanking)
+            if (scores_guild.get(rankingName) == undefined) {
+                scores_guild.set(rankingName, [])
+            }
+            scores_guild.get(rankingName.push(parentRanking))
         }
     }
     console.log("END readRankingLinks")

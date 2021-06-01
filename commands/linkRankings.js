@@ -13,7 +13,10 @@ function link (guild_ranking_links, childRanking, parentRanking)
 {
     if (!createLoop(guild_ranking_links, childRanking, parentRanking))
     {
-        guild_ranking_links.set(childRanking, parentRanking);
+        if (guild_ranking_links.get(childRanking) != undefined) {
+            guild_ranking_links.set(rankingName, [])
+        }
+        guild_ranking_links.get(childRanking).push(parentRanking);
         return "`" + parentRanking + "` will gain points everytime `" + childRanking + "` does."
     }
     else return "Error: can't create a loop!"

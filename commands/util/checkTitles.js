@@ -31,7 +31,8 @@ module.exports = (message, member, memberPts, rankings_titles, guildId, rankingN
 
     console.log("rankings_titles= " + rankings_titles)
     ranking_titles.forEach((nbpts, title) => {
-        console.log("----\ntitle = " + message.guild.roles.get(title).name)
+        if (!message.guild.roles.get(title)) return;
+        // console.log("----\ntitle = " + message.guild.roles.get(title).name)
         // let nbpts = rankings_titles.get(title)
         console.log("nbpts = " + nbpts)
         if (memberPts >= nbpts)

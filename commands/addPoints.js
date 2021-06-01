@@ -15,9 +15,10 @@ function addPointsToRanking(message, ranking, points, events, member, guild_rank
     let users = events.get(ranking)
 
     let parentRanking = guild_rankings_links.get(ranking)
-    if (parentRanking != undefined)
-    {
-        addPointsToRanking(message,parentRanking, points, events, member, guild_rankings_links, rankings_titles)
+    if (parentRanking != undefined) {
+        for (let i = 0; i < parentRanking.length; i++) {
+            addPointsToRanking(message, parentRanking[i], points, events, member, guild_rankings_links, rankings_titles)
+        }
     }
     return addAmountOfPointsToSb(message, points, users, member, rankings_titles, ranking)
 }
@@ -40,6 +41,8 @@ module.exports = (guildId, scores, message,words, rankings_links, rankings_title
         if (isNaN(points))
             return message.reply("Error! Mention how much points you want to add to mentioned people.\nTry : b!points <ranking> <points à ajouter> <@personne1> <@personne2> ... <@personne n>")
 
+        message.channel.send("Yo I'm still up dw points will be added even if the embed message doesn't appear")
+
         let answer = 'You have granted ' + points + ' points to:\n'
         // fs.createReadStream(generateFilePath(guildId))
 
@@ -61,11 +64,13 @@ module.exports = (guildId, scores, message,words, rankings_links, rankings_title
             answer = answer + addPointsToRanking(message, words[1], points, events, member, guild_rankings_links, rankings_titles)
         })
         save(scores)
+        // message.channel.send("... points added, if I like you I'll display new scores")
+
         message.channel.send({embed: {
                 title: 'Points added in ' + words[1],
                 description: answer
             }})
     }
     else
-        return message.reply("Only an Admin or a 'b! point giver' can give points! You can't fool probot that easily :P")
+        message.reply("Only an Admin or a 'b! point giver' can give points! You can't fool probot that easily :P")
 }
