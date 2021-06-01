@@ -44,7 +44,8 @@ function createLinks(data)
 
             let rankingName = rankings[j]
             console.log("rankingName = " + rankingName + " , parentRanking = " + parentRanking)
-            if (scores_guild.get(rankingName) == undefined) {
+            if (!scores_guild.get(rankingName)) {
+                console.log("creating array for " + rankingName)
                 scores_guild.set(rankingName, [])
             }
             scores_guild.get(rankingName).push(parentRanking)
