@@ -48,7 +48,7 @@ function guildScoresToJson(map)
         res = res.substring(0,res.length-2) + ']'
         res +='\n';
     }
-    res = res.substring(0,res.length-2) + '\n'
+    res = res.substring(0,res.length-1) + '\n'
     res += '}\n';
 
     return res
