@@ -48,7 +48,8 @@ function createLinks(data)
                 console.log("creating array for " + rankingName)
                 scores_guild.set(rankingName, [])
             }
-            scores_guild.get(rankingName).push(parentRanking)
+            for (let i = 0; i < parentRanking.length ; i++)
+                scores_guild.get(rankingName).push(parentRanking[i])
         }
     }
     console.log("END readRankingLinks")
