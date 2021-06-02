@@ -13,7 +13,8 @@
     "fs-extra": "^9.0.1",
     "got": "^11.3.0",
     "gson": "^0.1.5",
-    "xmlhttprequest": "^1.8.0"
+    "xmlhttprequest": "^1.8.0",
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
