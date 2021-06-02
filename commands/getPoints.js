@@ -9,8 +9,7 @@ function getMemberPoints(rankings, member)
     return answer
 }
 
-module.exports = (guildId, message, scores) => {
-    let author = message.author
+module.exports = (guildId, message, scores, author) => {
 
     if (scores.get(guildId) == undefined)
         scores.set(guildId, new Map())
