@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "now-start": "node index.js",
-    "start": "node index.js"
+    "start": "pm2-runtime start ecosystem.config.js --env production"
   },
   "dependencies": {
     "csv-parser": "^2.2.0",
@@ -13,6 +12,7 @@
     "fs-extra": "^9.0.1",
     "got": "^11.3.0",
     "gson": "^0.1.5",
+    "pm2": "^4.5.6",
     "xmlhttprequest": "^1.8.0",
     "yarn": "^1.22.10"
   },
