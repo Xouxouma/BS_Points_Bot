@@ -41,7 +41,7 @@ module.exports = (guildId, scores, message,words, rankings_links, rankings_title
         if (isNaN(points))
             return message.reply("Error! Mention how much points you want to add to mentioned people.\nTry : b!points <ranking> <points à ajouter> <@personne1> <@personne2> ... <@personne n>")
 
-        message.channel.send("Yo I'm still up dw points will be added even if the embed message doesn't appear")
+        // message.channel.send("Yo I'm still up dw points will be added even if the embed message doesn't appear")
 
         let answer = 'You have granted ' + points + ' points to:\n'
         // fs.createReadStream(generateFilePath(guildId))
