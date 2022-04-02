@@ -16,6 +16,7 @@ function deleteSbFromRanking(member, ranking){
 
 module.exports = (guildId, message) => {
     if (message.member.roles.find(r => (r.name === "Admin" || r.name === "b!dictator"))) {
+        console.log("trying to kick people...")
 
         if (isNaN(points))
             return message.reply("Error! Mention how much points you want to add to mentioned people.\nTry : b!points <ranking> <points à ajouter> <@personne1> <@personne2> ... <@personne n>")
@@ -35,7 +36,12 @@ module.exports = (guildId, message) => {
         if (message.mentions.members.size == 0)
             return message.reply("Error! You need to mention people to give them points!\nTry : b!kick <@ID1> <@ID2> ...")
 
+        if (scores.get(guildId) == undefined)
+            scores.set(guildId, new Map())
+        let rankings = scores.get(guildId)
+
         message.mentions.members.forEach(member => {
+            console.log("trying to kick : " + member.toString())
             rankings.forEach((ranking, rankingName) => {
                 answer += deleteSbFromRanking(member, ranking)
             })
