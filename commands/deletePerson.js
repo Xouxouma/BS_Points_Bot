@@ -25,10 +25,6 @@ module.exports = (guildId, message) => {
         let answer = ''
         // fs.createReadStream(generateFilePath(guildId))
 
-        if (scores.get(guildId) == undefined)
-            scores.set(guildId, new Map())
-        let events = scores.get(guildId)
-
         // if (events.get(words[1]) == undefined)
         //     return message.reply("Error! You need to mention an existing ranking!\nTry : b!points <ranking> <points à ajouter> <@personne1> <@personne2> ... <@personne n>")
 

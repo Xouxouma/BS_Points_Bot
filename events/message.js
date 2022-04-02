@@ -13,6 +13,8 @@ var addTitle = require('../commands/addTitle')
 var readTitles = require('../data_persistency/readTitles')
 var showTitles = require('../commands/showTitles')
 var deleteTitle = require('../commands/deleteTitle')
+var deletePerson = require('../commands/deletePerson')
+
 
 module.exports = (client, scores, rankings_links, rankings_titles, message) => {
   if (message.content.startsWith('b!') ||message.content.startsWith('B!')) {
