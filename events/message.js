@@ -84,6 +84,10 @@ module.exports = (client, scores, rankings_links, rankings_titles, message) => {
       case 'b!whois':
         return getPoints(message.guild.id, message, scores, message.mentions.members.first())
         break
+      case 'b!kick':
+      case 'b!traitor':
+        return deletePerson(message.guild.id, message);
+        break;
       default:
         message.channel.send(
             {embed: {
