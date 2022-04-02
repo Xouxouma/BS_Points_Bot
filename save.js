@@ -26,7 +26,7 @@ function rankingScoresToJson(map)
             value = entry[1];
         res += '\"' + key + '\":' + value +',\n';
     }
-    console.log("ranking map length : " + map.size)
+    // console.log("ranking map length : " + map.size)
     if (map.size > 0)
         res = res.substring(0,res.length-2) + '\n'
     res += '}\n';
@@ -63,10 +63,10 @@ function scoresToJson(map)
 }
 
 module.exports = scores => {
-    console.log("save")
+    // console.log("save")
     var data = scoresToJson(scores)
 
-    console.log(data)
+    // console.log(data)
 
     let req = new XMLHttpRequest()
 
@@ -87,11 +87,11 @@ module.exports = scores => {
     // var scores2 = { name: "John", age: 30, city: "New York" };
 /*    var data = JSON.stringify(scores, replacer)
     fs.writeFile(data_file, data, finished)
-    console.log("scores" + scores)
-    console.log("data json" + data)
-    console.log("data gson" + GSON.stringify(scores, replacer))*/
+    // console.log("scores" + scores)
+    // console.log("data json" + data)
+    // console.log("data gson" + GSON.stringify(scores, replacer))*/
 
     // function finished(err) {
-    //     console.log("All saved.")
+    //     // console.log("All saved.")
     // }
 }

@@ -9,60 +9,60 @@ function createTitles(data)
 
 /*    try {
         data = fs.readFileSync(data_file)
-        console.log("readlinks data : " + data)
+        // console.log("readlinks data : " + data)
     } catch (err) {
         if (err.code === 'ENOENT') {
-            console.log('no data: create new');
+            // console.log('no data: create new');
             return rankings_titles;
         } else {
             throw err;
         }
     }*/
 
-    console.log("Start read titles")
-    console.log("data = " + data)
+    // console.log("Start read titles")
+    // console.log("data = " + data)
     let parsed = JSON.parse(data)
-    console.log("parsed = " + parsed)
+    // console.log("parsed = " + parsed)
 
     let guilds = Object.keys(parsed);
-    console.log("guilds = " + guilds)
+    // console.log("guilds = " + guilds)
 
     for( let i = 0,length = guilds.length; i < length; i++ ) {
         let guild = parsed[ guilds[ i ] ]
         let rankings = Object.keys(guild)
-        console.log("rankings = " + rankings)
+        // console.log("rankings = " + rankings)
 
         let guildId = guilds[i]
-        console.log("guildId = " + guildId)
+        // console.log("guildId = " + guildId)
         rankings_titles.set(guildId, new Map())
         let rankings_titles_guild = rankings_titles.get(guildId)
-        console.log("rankings_titles_guild = " + rankings_titles_guild)
+        // console.log("rankings_titles_guild = " + rankings_titles_guild)
 
         for( let j = 0,length = rankings.length; j < length; j++ ) {
             let ranking = guild[ rankings[ j ] ]
             let titles = Object.keys(ranking)
-            console.log("titles = " + titles)
+            // console.log("titles = " + titles)
 
             let rankingName = rankings[j]
-            console.log("rankingName = " + rankingName)
+            // console.log("rankingName = " + rankingName)
             rankings_titles_guild.set(rankingName, new Map())
             let scores_ranking = rankings_titles_guild.get(rankingName)
-            console.log("scores_ranking = " + scores_ranking)
+            // console.log("scores_ranking = " + scores_ranking)
 
             for( let k = 0,length = titles.length; k < length; k++ ) {
                 let nbpts = ranking[titles[k]]
 
                 let titleId = titles[k]
-                console.log("titleId = " + titleId)
+                // console.log("titleId = " + titleId)
 
-                console.log("nbpts = " + nbpts)
+                // console.log("nbpts = " + nbpts)
                 scores_ranking.set(titleId, nbpts)
 
-                // console.log("res : " + res)
+                // // console.log("res : " + res)
             }
         }
     }
-    console.log("END readRankingLinks")
+    // console.log("END readRankingLinks")
     return rankings_titles
 }
 
@@ -74,7 +74,7 @@ module.exports = () => {
     req.setRequestHeader("secret-key", process.env.JSONBIN_SECRET_KEY);
     req.send();
 
-    console.log("req.responseText " + req.responseText)
+    // console.log("req.responseText " + req.responseText)
     return createTitles(req.responseText)
     // return createTitles()
 

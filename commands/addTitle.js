@@ -24,7 +24,7 @@ module.exports = (message, scores, title, nbpts, ranking, rankings_titles) => {
     titles.set(titleId, nbpts)
 
 
-    console.log("rankings_titles updated = " + rankings_titles)
+    // console.log("rankings_titles updated = " + rankings_titles)
 
     saveTitles(rankings_titles)
 

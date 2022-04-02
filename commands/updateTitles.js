@@ -7,7 +7,7 @@ module.exports = (message, scores, rankings_titles) => {
     message.member.addRole("715167963392639036")
     message.guild.members.forEach(member =>
         scores_guild.forEach((ranking, rankingName) => {
-            console.log("CHECKTITLES of rankingname : " + rankingName)
+            // console.log("CHECKTITLES of rankingname : " + rankingName)
             checkTitles(message, member, getRankingMemberPoints(ranking, member), rankings_titles, message.guild.id, rankingName)
         })
     )

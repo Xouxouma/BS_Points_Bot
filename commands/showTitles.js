@@ -3,7 +3,7 @@
 //         if (!await member.roles.has(title))
 //         {
 //             await member.addRole(title)
-//             console.log("Role given : " + title + " to " + member.id)
+//             // console.log("Role given : " + title + " to " + member.id)
 //             message.channel.send("Congrats <@" + member.id + "> for your new title : " + message.guild.roles.get(title).name + "!")
 //         }
 //     }

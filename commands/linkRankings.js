@@ -14,10 +14,10 @@ function link (guild_ranking_links, childRanking, parentRanking)
     if (!createLoop(guild_ranking_links, childRanking, parentRanking))
     {
         if (!guild_ranking_links.get(childRanking)) {
-            console.log("adding array " + rankingName)
+            // console.log("adding array " + rankingName)
             guild_ranking_links.set(rankingName, [])
         }
-        console.log("`" + parentRanking + "` will gain points everytime `" + childRanking + "` does.")
+        // console.log("`" + parentRanking + "` will gain points everytime `" + childRanking + "` does.")
         guild_ranking_links.get(childRanking).push(parentRanking);
         return "`" + parentRanking + "` will gain points everytime `" + childRanking + "` does."
     }

@@ -15,7 +15,7 @@ module.exports = (message,scores) => {
   //   var filepath = generateFilePath(message)
   // }
   // catch(e) {
-  //   console.log(e)
+  //   // console.log(e)
   //   return message.reply(e)
   // }
 

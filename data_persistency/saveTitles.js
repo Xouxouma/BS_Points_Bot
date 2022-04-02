@@ -10,7 +10,7 @@ function titlesToJson(map)
             value = entry[1];
         res += '\"' + key + '\":' + value +',\n';
     }
-    console.log("ranking map length : " + map.size)
+    // console.log("ranking map length : " + map.size)
     if (map.size > 0)
         res = res.substring(0,res.length-2) + '\n'
     res += '}\n';
@@ -48,16 +48,16 @@ function rankings_titlesToJson(map)
 
 
 module.exports = rankings_titles => {
-    console.log("save")
+    // console.log("save")
     var data = rankings_titlesToJson(rankings_titles)
 
-    console.log("saveTitles : " + data)
+    // console.log("saveTitles : " + data)
 
     let req = new XMLHttpRequest()
 
     req.onreadystatechange = () => {
         if (req.readyState == req.DONE) {
-            console.log("PUT finished : " + req.responseText)
+            // console.log("PUT finished : " + req.responseText)
         }
     }
 

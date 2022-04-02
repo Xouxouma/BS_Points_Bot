@@ -27,7 +27,7 @@ function rankingScoresToJson(map)
         for (let i = 0; i < value.length ; i++)
             res += '\"' + key + '\":' + value[i] +',\n';
     }
-    console.log("ranking map length : " + map.size)
+    // console.log("ranking map length : " + map.size)
     if (map.size > 0)
         res = res.substring(0,res.length-2) + '\n'
     res += '}\n';
@@ -69,16 +69,16 @@ function scoresToJson(map)
 }
 
 module.exports = links => {
-    console.log("save")
+    // console.log("save")
     var data = scoresToJson(links)
 
-    console.log("saveLinks : " + data)
+    // console.log("saveLinks : " + data)
 
     let req = new XMLHttpRequest()
 
     req.onreadystatechange = () => {
         if (req.readyState == req.DONE) {
-            console.log("PUT finished : " + req.responseText)
+            // console.log("PUT finished : " + req.responseText)
         }
     }
 
