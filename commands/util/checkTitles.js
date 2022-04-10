@@ -40,6 +40,6 @@ module.exports = (message, member, memberPts, rankings_titles, guildId, rankingN
             // console.log("Role will be given : " + title + " to " + member.id)
             addRole(message, member, title)
         }
-        else // console.log("Role not given, not enough points")
+        // else console.log("Role not given, not enough points")
     })
 }
