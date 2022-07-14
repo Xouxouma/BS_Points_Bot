@@ -63,7 +63,7 @@ module.exports = () => {
     let req = new XMLHttpRequest()
 
     req.open("GET", process.env.JSONBIN_URL + "/latest", false);
-    req.setRequestHeader("secret-key", process.env.JSONBIN_SECRET_KEY);
+    req.setRequestHeader("X-Master-Key", process.env.JSONBIN_SECRET_KEY);
     req.send();
 
     // console.log("req.responseText " + req.responseText)
