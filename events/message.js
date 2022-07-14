@@ -45,6 +45,7 @@ module.exports = (client, scores, rankings_links, rankings_titles, message) => {
       case 'b!delete':
       case 'b!del':
       case 'b!kill':
+
         return deleteRanking(message,scores)
         break
       case 'b!reset':
@@ -63,6 +64,7 @@ module.exports = (client, scores, rankings_links, rankings_titles, message) => {
       case 'b!points':
       case 'b!amigood':
       case 'b!me':
+
         return getPoints(message.guild.id, message, scores, message.author)
         break
       case 'b!updatetitles':
@@ -88,6 +90,7 @@ module.exports = (client, scores, rankings_links, rankings_titles, message) => {
         break
       case 'b!kick':
       case 'b!traitor':
+        console.log("cmd kick!");
         return deletePerson(message.guild.id, message);
         break;
       default:
