@@ -21,7 +21,7 @@ function createTitles(data)
 
     // console.log("Start read titles")
     // console.log("data = " + data)
-    let parsed = JSON.parse(data)
+    let parsed = JSON.parse(data). record
     // console.log("parsed = " + parsed)
 
     let guilds = Object.keys(parsed);
