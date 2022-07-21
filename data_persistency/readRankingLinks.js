@@ -22,7 +22,7 @@ function createLinks(data)
     }*/
     // console.log("Start readRankingLinks")
     // console.log("data = " + data)
-    let parsed = JSON.parse(data)
+    let parsed = JSON.parse(data).record
     // console.log("parsed = " + parsed)
 
     let guilds = Object.keys(parsed);
