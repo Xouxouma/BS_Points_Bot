@@ -83,7 +83,7 @@ module.exports = links => {
     }
 
     req.open("PUT", process.env.JSONLINKS_URL, true);
-    req.setRequestHeader("secret-key", process.env.JSONBIN_SECRET_KEY);
+    req.setRequestHeader("X-Master-Key", process.env.JSONBIN_SECRET_KEY);
     req.setRequestHeader("Content-Type", "application/json");
     req.setRequestHeader("versioning", false);
     req.send(data);
