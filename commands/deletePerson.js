@@ -18,11 +18,6 @@ module.exports = (guildId, message) => {
     if (message.member.roles.find(r => (r.name === "Admin" || r.name === "b!dictator"))) {
         console.log("trying to kick people...")
 
-        if (isNaN(points))
-            return message.reply("Error! Mention how much points you want to add to mentioned people.\nTry : b!points <ranking> <points à ajouter> <@personne1> <@personne2> ... <@personne n>")
-
-        // message.channel.send("Yo I'm still up dw points will be added even if the embed message doesn't appear")
-
         let answer = ''
         // fs.createReadStream(generateFilePath(guildId))
 
