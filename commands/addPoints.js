@@ -39,7 +39,7 @@ module.exports = (guildId, scores, message,words, rankings_links, rankings_title
         let points = parseInt(words[2])
 
         if (isNaN(points))
-            return message.reply("Error! Mention how much points you want to add to mentioned people.\nTry : b!points <ranking> <points à ajouter> <@personne1> <@personne2> ... <@personne n>")
+            return message.reply("Error! Mention how much points you want to add to mentioned people.\nTry : b!add <ranking> <number of points> <@nobody> <@some cool guy> ... <@another one>")
 
         // message.channel.send("Yo I'm still up dw points will be added even if the embed message doesn't appear")
 
@@ -51,14 +51,14 @@ module.exports = (guildId, scores, message,words, rankings_links, rankings_title
         let events = scores.get(guildId)
 
         if (events.get(words[1]) == undefined)
-            return message.reply("Error! You need to mention an existing ranking!\nTry : b!points <ranking> <points à ajouter> <@personne1> <@personne2> ... <@personne n>")
+            return message.reply("Error! You need to mention an existing ranking!\nTry : b!add <ranking> <number of points> <@nobody> <@some cool guy> ... <@another one>")
 
         if (rankings_links.get(message.guild.id) == undefined)
             rankings_links.set(message.guild.id, new Map())
         let guild_rankings_links = rankings_links.get(message.guild.id)
 
         if (message.mentions.members.size == 0)
-            return message.reply("Error! You need to mention people to give them points!\nTry : b!points <ranking> <points à ajouter> <@personne1> <@personne2> ... <@personne n>")
+            return message.reply("Error! You need to mention people to give them points!\nTry : b!add <ranking> <number of points> <@nobody> <@some cool guy> ... <@another one>")
 
         message.mentions.members.forEach(member => {
             answer = answer + addPointsToRanking(message, words[1], points, events, member, guild_rankings_links, rankings_titles)
