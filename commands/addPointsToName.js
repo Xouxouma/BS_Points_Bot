@@ -32,15 +32,11 @@ function addAmountOfPointsToSb(message, points, users, member, ranking_titles, r
 
 module.exports = (guildId, scores, message,words, rankings_links, rankings_titles) => {
     if (message.member.roles.find(r => r.name === "Admin" || r.name === "b! point giver")) {
-        let members = words.clone(); // each member can be any string actually
-        members.split(0,3)
         let points = parseInt(words[2])
-        console.log('trying to give points with words: ' + words.toString())
         if (isNaN(points))
             return message.reply("Error! Mention how much points you want to add.\nTry : b!add <ranking> <number of points> <@nobody> <@some cool guy> ... <@another one>")
 
         // message.channel.send("Yo I'm still up dw points will be added even if the embed message doesn't appear")
-
         let answer = 'You have granted ' + points + ' points to:\n'
         // fs.createReadStream(generateFilePath(guildId))
 
@@ -55,7 +51,11 @@ module.exports = (guildId, scores, message,words, rankings_links, rankings_title
             rankings_links.set(message.guild.id, new Map())
         let guild_rankings_links = rankings_links.get(message.guild.id)
 
-        if (!members || members.length == 0)
+        let members = [...words]; // each member can be any string actually
+        members.splice(0,3)
+        let memberError = false
+        console.log('trying to give ' + points + ' points with words: ' + words.toString())
+        if (memberError || !members || members.length == 0)
             return message.reply("Error! You need to give guild name(s) to give them points!\nTry : b!add <ranking> <number of points> <guild> <some other guild>")
         
         console.log('trying to give points with members: ' + members.toString())
