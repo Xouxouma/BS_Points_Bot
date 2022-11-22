@@ -14,6 +14,8 @@ var readTitles = require('../data_persistency/readTitles')
 var showTitles = require('../commands/showTitles')
 var deleteTitle = require('../commands/deleteTitle')
 var deletePerson = require('../commands/deletePerson')
+var addPointsToName = require('../commands/addPointsToName')
+
 
 
 module.exports = (client, scores, rankings_links, rankings_titles, message) => {
@@ -45,7 +47,7 @@ module.exports = (client, scores, rankings_links, rankings_titles, message) => {
       case 'b!delete':
       case 'b!del':
       case 'b!kill':
-
+        
         return deleteRanking(message,scores)
         break
       case 'b!reset':
@@ -92,6 +94,9 @@ module.exports = (client, scores, rankings_links, rankings_titles, message) => {
       case 'b!traitor':
         console.log("cmd kick!");
         return deletePerson(message.guild.id, message);
+        break;
+      case 'b!give':
+        return addPointsToName(message.guild.id, scores, message, words, rankings_links, rankings_titles);
         break;
       default:
         message.channel.send(
