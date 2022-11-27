@@ -15,6 +15,7 @@ var showTitles = require('../commands/showTitles')
 var deleteTitle = require('../commands/deleteTitle')
 var deletePerson = require('../commands/deletePerson')
 var addPointsToName = require('../commands/addPointsToName')
+var getPointsForRoles = require('../commands/getPointsForRoles')
 
 
 
@@ -97,6 +98,17 @@ module.exports = (client, scores, rankings_links, rankings_titles, message) => {
         break;
       case 'b!give':
         return addPointsToName(message.guild.id, scores, message, words, rankings_links, rankings_titles);
+        break;
+      case 'b!showguild':
+      case 'b!showguilds':
+      case 'b!guild':
+      case 'b!guilds':
+      case 'b!role':
+      case 'b!roles':
+      case 'b!showRole':
+      case 'b!showRoles':
+      case 'b!expose':
+        return getPointsForRoles(message.guild.id, scores, words[1], message.mentions.roles, message)
         break;
       default:
         message.channel.send(
