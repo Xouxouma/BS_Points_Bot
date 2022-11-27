@@ -15,7 +15,7 @@ function link (guild_ranking_links, childRanking, parentRanking)
     {
         if (!guild_ranking_links.get(childRanking)) {
             // console.log("adding array " + rankingName)
-            guild_ranking_links.set(rankingName, [])
+            guild_ranking_links.set(childRanking, [])
         }
         // console.log("`" + parentRanking + "` will gain points everytime `" + childRanking + "` does.")
         guild_ranking_links.get(childRanking).push(parentRanking);
