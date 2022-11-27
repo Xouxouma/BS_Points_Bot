@@ -2,19 +2,18 @@
 // const fs = require('fs');
 const save = require('../save')
 
-function deleteSbFromRanking(member, ranking){
+function deleteSbFromRanking(member, ranking, rankingName){
     let memberId = "<@"+member.id+">"
-    if (users.get(memberId) == undefined)
-        users.set(memberId,0)
-
-    users.delete(memberId)
-
-    let answer = member.toString()+"\n"
-    return answer
+    let answer = ""
+    if (ranking.get(memberId) != undefined) {
+        ranking.delete(memberId)
+        answer = member.toString()+" from "+ rankingName + "\n"
+    }
+    return answer;
 }
 
 
-module.exports = (guildId, message) => {
+module.exports = (guildId, message, scores) => {
     if (message.member.roles.find(r => (r.name === "Admin" || r.name === "b!dictator"))) {
         console.log("trying to kick people...")
 
@@ -38,14 +37,14 @@ module.exports = (guildId, message) => {
         message.mentions.members.forEach(member => {
             console.log("trying to kick : " + member.toString())
             rankings.forEach((ranking, rankingName) => {
-                answer += deleteSbFromRanking(member, ranking)
+                answer += deleteSbFromRanking(member, ranking, rankingName)
             })
         })
         save(scores)
         // message.channel.send("... points added, if I like you I'll display new scores")
 
         message.channel.send({embed: {
-                title: 'Removed some guys',
+                title: 'Some people now belongs to the trash',
                 description: answer
             }})
     }

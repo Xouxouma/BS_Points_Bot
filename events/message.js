@@ -93,7 +93,7 @@ module.exports = (client, scores, rankings_links, rankings_titles, message) => {
       case 'b!kick':
       case 'b!traitor':
         console.log("cmd kick!");
-        return deletePerson(message.guild.id, message);
+        return deletePerson(message.guild.id, message, scores);
         break;
       case 'b!give':
         return addPointsToName(message.guild.id, scores, message, words, rankings_links, rankings_titles);
