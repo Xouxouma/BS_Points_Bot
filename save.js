@@ -79,7 +79,7 @@ module.exports = scores => {
     req.open("PUT", process.env.JSONBIN_URL, true);
     req.setRequestHeader("X-Master-Key", process.env.JSONBIN_SECRET_KEY);
     req.setRequestHeader("Content-Type", "application/json");
-    req.setRequestHeader("versioning", false);
+    req.setRequestHeader("X-Bin-Versioning", true);
     req.send(data);
 
     // fs.writeFile(data_file, data, finished)
