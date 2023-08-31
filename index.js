@@ -31,6 +31,10 @@ client.on('ready', () => {
     console.error('client > ready fired!');
 });
 
+client.on('message', () => {
+	console.log("message received\n")
+});
+
 client.on('warn', (msg) => {
     console.error('client > warn fired!');
     console.warn(msg);
