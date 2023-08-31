@@ -5,7 +5,7 @@ var readTitles = require('./data_persistency/readTitles')
 const data_file = './db/scores_data.json'
 const Discord = require('discord.js')
 const fs = require('fs')
-const client = new Discord.Client({intents: [Discord.GatewayIntentBits.GuildMessages]})
+const client = new Discord.Client({intents: 32767})
 const User = require('./model/User.js')
 
 client.login(process.env.BOT_TOKEN)
