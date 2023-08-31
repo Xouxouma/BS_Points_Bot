@@ -27,7 +27,18 @@ fs.readdir('./events/', (err, files) => {
     client.on(eventName, (...args) => eventHandler(client, scores, rankings_links, rankings_titles, ...args));
   })
 })
+client.on('ready', () => {
+    console.error('client > ready fired!');
+});
 
+client.on('warn', (msg) => {
+    console.error('client > warn fired!');
+    console.warn(msg);
+});
+client.on('error', (msg) => {
+    console.error('client > error fired!');
+    console.error(msg);
+});
 
 
 require('http').createServer().listen(2091)
