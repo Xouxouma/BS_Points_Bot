@@ -3,9 +3,9 @@ var read = require('./read')
 var readRankingLinks = require('./data_persistency/readRankingLinks')
 var readTitles = require('./data_persistency/readTitles')
 const data_file = './db/scores_data.json'
-const {Discord, GatewayIntentBits} = require('discord.js')
+const {DiscordClient, GatewayIntentBits} = require('discord.js')
 const fs = require('fs')
-const client = new Discord.Client({intents: [GatewayIntentBits.Guilds,
+const client = new DiscordClient({intents: [GatewayIntentBits.Guilds,
 		GatewayIntentBits.GuildMessages,
 		GatewayIntentBits.MessageContent,
 		GatewayIntentBits.GuildMembers]})
