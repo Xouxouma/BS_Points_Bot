@@ -1,7 +1,7 @@
 var getRanking = require('./getRanking')
 
 module.exports = (message, scores) => {
-  // if (!message.member.roles.find(r => r.name === "Admin"))
+  // if (!message.member.roles.cache.find(r => r.name === "Admin"))
   //   return message.reply("Only an Admin can give points! You can't fool probot that easily :P")
   rankings = scores.get(message.guild.id)
   if (rankings == undefined)
@@ -13,10 +13,10 @@ module.exports = (message, scores) => {
     let answers = getRanking(ranking)
     for (let i = 0; i < answers.length; i++)
     {
-      message.channel.send({embed: {
+      message.channel.send({embeds: [{
           title: rankingName + " (" + (i+1) + " / " + answers.length + ")",
           description: answers[i]
-        }})
+        }]})
     }
   })
 
