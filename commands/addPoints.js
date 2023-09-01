@@ -35,7 +35,7 @@ function addAmountOfPointsToSb(message, points, users, member, ranking_titles, r
 }
 
 module.exports = (guildId, scores, message,words, rankings_links, rankings_titles) => {
-    if (message.member.roles.find(r => r.name === "Admin" || r.name === "b! point giver")) {
+    if (message.member.roles.cache.find(r => r.name === "Admin" || r.name === "b! point giver")) {
         let points = parseInt(words[2])
 
         if (isNaN(points))
