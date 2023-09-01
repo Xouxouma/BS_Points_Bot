@@ -66,10 +66,10 @@ module.exports = (guildId, scores, message,words, rankings_links, rankings_title
         save(scores)
         // message.channel.send("... points added, if I like you I'll display new scores")
 
-        message.channel.send({embed: {
+        message.channel.send({embeds: [{
                 title: 'Points added in ' + words[1],
                 description: answer
-            }})
+            }]})
     }
     else
         message.reply("Only an Admin or a 'b! point giver' can give points! You can't fool probot that easily :P")
