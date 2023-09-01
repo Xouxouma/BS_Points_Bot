@@ -16,10 +16,10 @@ module.exports = (message,scores) => {
   let answers = getRanking(ranking)
   for (let i = 0; i < answers.length; i++)
   {
-    message.channel.send({embed: {
+    message.channel.send({embeds: [{
         title: rankingName + " (" + (i+1) + " / " + answers.length + ")",
         description: answers[i]
-      }})
+      }]})
   }
   // return "here's the leaderboard you've asked for:\n\n**" + rankingName+ "**:\n\n" + getRanking(ranking);
 }
