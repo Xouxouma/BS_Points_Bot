@@ -26,7 +26,7 @@ function link (guild_ranking_links, childRanking, parentRanking)
 
 
 module.exports = (message,scores, rankings_links) => {
-    if (!message.member.roles.find(r => r.name === "Admin"))
+    if (!message.member.roles.cache.find(r => r.name === "Admin"))
         return message.reply("Only an Admin can do that! You can't fool probot that easily :P")
     let childRanking = message.content.split(" ")[1]
     if (childRanking == undefined)

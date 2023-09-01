@@ -1,12 +1,12 @@
 
 async function addRole(message, member, title) {
     try {
-        if (message.guild.member(member.id) && !member.roles.has(title))
+        if (message.guild.member(member.id) && !member.roles.cache.has(title))
         {
             // console.log("0 - Role given : " + title + " to " + member.id)
             await member.addRole(title)
             // console.log("1 - Role given : " + title + " to " + member.id)
-            message.channel.send("Congrats <@" + member.id + "> for your new title : " + message.guild.roles.get(title).name + "!")
+            message.channel.send("Congrats <@" + member.id + "> for your new title : " + message.guild.roles.cache.get(title).name + "!")
         }
     }
     catch (exception)
@@ -31,7 +31,7 @@ module.exports = (message, member, memberPts, rankings_titles, guildId, rankingN
 
     // console.log("rankings_titles= " + rankings_titles)
     ranking_titles.forEach((nbpts, title) => {
-        if (!message.guild.roles.get(title)) return;
+        if (!message.guild.roles.cache.get(title)) return;
         // // console.log("----\ntitle = " + message.guild.roles.get(title).name)
         // let nbpts = rankings_titles.get(title)
         // console.log("nbpts = " + nbpts)

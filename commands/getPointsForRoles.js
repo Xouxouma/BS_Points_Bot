@@ -3,7 +3,7 @@ const getRankingMemberPoints = require("./util/getRankingMemberPoints")
 function getPointsForASingleRole(ranking, role, allMembers) {
     let acc = 0
     let members = allMembers.filter(member => { 
-        return member.roles.find(r => r.id === role.id);
+        return member.roles.cache.find(r => r.id === role.id);
     });
     members.forEach(member => {
         let memberPoints = ranking.get("<@"+member.id+">")
