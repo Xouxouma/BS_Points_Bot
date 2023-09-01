@@ -2,7 +2,7 @@ saveTitles = require('../data_persistency/saveTitles')
 
 
 module.exports = (message, title, rankings_titles) => {
-    if (!message.member.roles.find(r => r.name === "Admin"))
+    if (!message.member.roles.cache.find(r => r.name === "Admin"))
         return message.reply("Only an Admin can do that! You can't fool probot that easily :P")
 
     let titleId = title.id
