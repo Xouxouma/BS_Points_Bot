@@ -16,8 +16,9 @@ module.exports = (guildId, message, scores, author) => {
     let rankings = scores.get(guildId)
 
     answer = getMemberPoints(rankings, author)
-    message.channel.send({embed: {
+    console.log("someone asked points of: "+author.id+" , this guy has : "+answer)
+    message.channel.send({embeds: [{
             description: "<@"+author.id+">\n\n" + answer
-        }})
+        }]})
      return answer
 }
