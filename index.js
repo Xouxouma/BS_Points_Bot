@@ -31,7 +31,7 @@ client.on('ready', () => {
     console.error('client > ready fired!');
 });
 
-client.on('message', () => {
+client.on('messageCreate', (message) => {
 	console.log("message received\n")
 });
 
