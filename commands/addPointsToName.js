@@ -31,7 +31,7 @@ function addAmountOfPointsToSb(message, points, users, member, ranking_titles, r
 }
 
 module.exports = (guildId, scores, message,words, rankings_links, rankings_titles) => {
-    if (message.member.roles.find(r => r.name === "Admin" || r.name === "b! point giver")) {
+    if (message.member.roles.cache.find(r => r.name === "Admin" || r.name === "b! point giver")) {
         let points = parseInt(words[2])
         if (isNaN(points))
             return message.reply("Error! Mention how much points you want to add.\nTry : b!add <ranking> <number of points> <@nobody> <@some cool guy> ... <@another one>")
@@ -66,10 +66,10 @@ module.exports = (guildId, scores, message,words, rankings_links, rankings_title
         save(scores)
         // message.channel.send("... points added, if I like you I'll display new scores")
 
-        message.channel.send({embed: {
+        message.channel.send({embeds: [{
                 title: 'Points added in ' + words[1],
                 description: answer
-            }})
+            }]})
     }
     else
         message.reply("Only an Admin or a 'b! point giver' can give points! You can't fool probot that easily :P")
