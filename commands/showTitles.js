@@ -22,8 +22,8 @@ module.exports = (message, rankings_titles) =>
             answer += "" + message.guild.roles.get(title).name + " : " + nbpts + " " + ranking_name + "\n"
         })
     })
-    message.channel.send({embed: {
+    message.channel.send({embeds: [{
             title: 'Titles',
             description: answer
-        }})
+        }]})
 }
