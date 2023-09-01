@@ -9,7 +9,7 @@ function generateFilePath(message) {
 }
 
 module.exports = (message,scores) => {
-  if (!message.member.roles.find(r => r.name === "Admin"))
+  if (!message.member.roles.cache.find(r => r.name === "Admin"))
     return message.reply("Only an Admin can do that! You can't fool probot that easily :P")
   // try {
   //   var filepath = generateFilePath(message)
