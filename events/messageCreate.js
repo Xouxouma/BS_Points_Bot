@@ -74,7 +74,7 @@ module.exports = (client, scores, rankings_links, rankings_titles, message) => {
         return updateTitles(message, scores, rankings_titles)
         break
       case 'b!addtitle':
-        return addTitle(message, scores, message.mentions.roles.cache.first(), words[1], words[2], rankings_titles)
+        return addTitle(message, scores, message.mentions.roles.first(), words[1], words[2], rankings_titles)
         break
       case 'b!readtitle':
         return readTitles()
@@ -84,7 +84,7 @@ module.exports = (client, scores, rankings_links, rankings_titles, message) => {
         return showTitles(message, rankings_titles)
         break
       case 'b!deletetitle':
-        return deleteTitle(message, message.mentions.roles.cache.first(), rankings_titles)
+        return deleteTitle(message, message.mentions.roles.first(), rankings_titles)
         break
       case 'b!stalk':
       case 'b!check':
