@@ -112,7 +112,7 @@ module.exports = (client, scores, rankings_links, rankings_titles, message) => {
         break;
       default:
         message.channel.send(
-            {embed: {
+            {embeds: [{
                 title: 'Help',
                 description: "Looks like you're struggling, the only public commands are :\n" +
                     "\t- **b!show TOTO** : show the ranking named TOTO\n" +
@@ -120,7 +120,7 @@ module.exports = (client, scores, rankings_links, rankings_titles, message) => {
                     "\t- **b!stalk @LaBaguette**: show the scores of LaBaguette\n" +
                     "\t- for **b! point giver**:\n" +
                     "\t- **b!add total 1 @LaBaguette** : add 1 point in the total ranking to LaBaguette"
-              }})
+              }]})
         break;
     }
     // save(scores);
