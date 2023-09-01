@@ -4,7 +4,7 @@ const getRankingMemberPoints = require("../commands/util/getRankingMemberPoints"
 
 module.exports = (message, scores, rankings_titles) => {
     let scores_guild = scores.get(message.guild.id)
-    message.member.addRole("715167963392639036")
+    // message.member.addRole("715167963392639036")
     message.guild.members.cache.forEach(member =>
         scores_guild.forEach((ranking, rankingName) => {
             // console.log("CHECKTITLES of rankingname : " + rankingName)
