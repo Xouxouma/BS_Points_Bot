@@ -1,7 +1,7 @@
 const save = require('../save')
 
 module.exports = (message,scores) => {
-  if (!message.member.roles.find(r => r.name === "Admin"))
+  if (!message.member.roles.cache.find(r => r.name === "Admin"))
     return message.reply("Only an Admin can can do that! You can't fool probot that easily :P")
   guildId = message.guild.id
   eventName = message.content.split(" ")[1]
