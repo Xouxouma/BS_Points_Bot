@@ -14,7 +14,7 @@ function deleteSbFromRanking(member, ranking, rankingName){
 
 
 module.exports = (guildId, message, scores) => {
-    if (message.member.roles.find(r => (r.name === "Admin" || r.name === "b!dictator"))) {
+    if (message.member.roles.cache.find(r => (r.name === "Admin" || r.name === "b!dictator"))) {
         console.log("trying to kick people...")
 
         let answer = ''
@@ -43,10 +43,10 @@ module.exports = (guildId, message, scores) => {
         save(scores)
         // message.channel.send("... points added, if I like you I'll display new scores")
 
-        message.channel.send({embed: {
+        message.channel.send({embeds: [{
                 title: 'Some people now belongs to the trash',
                 description: answer
-            }})
+            }]})
     }
     else
         message.reply("Only an Admin or a 'b! point giver' can give points! You can't fool probot that easily :P")
