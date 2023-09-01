@@ -34,10 +34,10 @@ module.exports = (guildId, scores, rankingName, roles, message) => {
     })
 
     message.channel.send({
-        embed: {
+        embeds: [{
             title: rankingName + ' (points per role)',
             description: answer
-        }
+        }]
     })
     return answer
 }
