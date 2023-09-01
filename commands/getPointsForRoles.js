@@ -16,7 +16,7 @@ function getPointsForASingleRole(ranking, role, allMembers) {
 
 module.exports = (guildId, scores, rankingName, roles, message) => {
 
-    let allMembers = message.guild.members
+    let allMembers = message.guild.members.cache
     if (scores.get(guildId) == undefined)
         scores.set(guildId, new Map())
     let rankings = scores.get(guildId)
