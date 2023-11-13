@@ -5,7 +5,7 @@ module.exports = (message, scores, title, nbpts, ranking, rankings_titles) => {
     if (!message.member.roles.cache.find(r => r.name === "Admin"))
         return message.reply("Only an Admin can do that! You can't fool probot that easily :P")
 
-    let titleId = title.id
+    
     let rankings = scores.get(message.guild.id)
     if (rankings == undefined)
         return message.reply("Error! No ranking on this server.\nTry: b!create <ranking-name>")
@@ -21,6 +21,10 @@ module.exports = (message, scores, title, nbpts, ranking, rankings_titles) => {
         rankings_titles_guild.set(ranking, new Map())
     let titles = rankings_titles_guild.get(ranking)
 
+    if (title == undefined) {
+        return message.reply("Error! No role mentionned! Ex: b!addtitle 10 total @somerole")
+    }
+    let titleId = title.id
     titles.set(titleId, nbpts)
 
 

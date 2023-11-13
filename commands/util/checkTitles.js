@@ -1,17 +1,17 @@
 
 async function addRole(message, member, title) {
     try {
-        if (c && !member.roles.cache(title))
+        if (message.guild.members.cache.get(member.id) && !member.roles.cache.get(title))
         {
             // console.log("0 - Role given : " + title + " to " + member.id)
-            await member.addRole(title)
+            await member.roles.add(title)
             // console.log("1 - Role given : " + title + " to " + member.id)
             message.channel.send("Congrats <@" + member.id + "> for your new title : " + message.guild.roles.cache.get(title).name + "!")
         }
     }
     catch (exception)
     {
-        // console.log("addRole bugged : member : " + member + " title : " + title)
+        console.log("addRole bugged : member : " + member + " title : " + title)
         return exception
     }
 }
