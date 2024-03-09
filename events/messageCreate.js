@@ -116,7 +116,7 @@ module.exports = (client, scores, rankings_links, rankings_titles, message) => {
         var guildId = words[1];
         if (!guildId) return message.channel.send("add server id to delete")
         console.log("leaving guild " + guildId)
-        var guild = bot.guilds.cache.get(guildId) // argument is the server id to leave
+        var guild = client.guilds.cache.get(guildId) // argument is the server id to leave
         guild.leave()
         scores.delete(guildId)
         save(scores)
