@@ -1,4 +1,4 @@
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+I'mvar XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const fs = require('fs')
 const GSON = require('gson')
 const data_file = './db/links_data.json'
@@ -72,13 +72,13 @@ module.exports = links => {
     // console.log("save")
     var data = scoresToJson(links)
 
-    // console.log("saveLinks : " + data)
+    console.log("saveLinks : " + data)
 
     let req = new XMLHttpRequest()
 
     req.onreadystatechange = () => {
         if (req.readyState == req.DONE) {
-            // console.log("PUT finished : " + req.responseText)
+            console.log("PUT finished : " + req.responseText)
         }
     }
 
