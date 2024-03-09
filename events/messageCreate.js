@@ -110,11 +110,17 @@ module.exports = (client, scores, rankings_links, rankings_titles, message) => {
       case 'b!expose':
         return getPointsForRoles(message.guild.id, scores, words[1], message.mentions.roles, message)
         break;
-      case `leave`:
+      case `b!leave`:
         if(message.author.id !==process.env.masterDiscordId) 
          return message.channel.send(`**»** ${message.author}, you don't have permission to do that!`);
-        var guildID = bot.guilds.cache.get(words[1]) // argument is the server id to leave
-        guildID.leave()
+        var guildId = words[1];
+        if (!guildId) return message.channel.send("add server id to delete")
+        console.log("leaving guild " + guildId)
+        var guild = bot.guilds.cache.get(guildId) // argument is the server id to leave
+        guild.leave()
+        scores.delete(guildId)
+        save(scores)
+        return message.channel.send("I left "+ words[1]);
         break;
       default:
         message.channel.send(
