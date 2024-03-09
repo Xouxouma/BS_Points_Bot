@@ -1,4 +1,4 @@
-I'mvar XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const fs = require('fs')
 const GSON = require('gson')
 const data_file = './db/links_data.json'
