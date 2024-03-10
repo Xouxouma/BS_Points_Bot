@@ -20,41 +20,41 @@ function createLinks(data)
             throw err;
         }
     }*/
-    // console.log("Start readRankingLinks")
-    // console.log("data = " + data)
+    console.log("Start readRankingLinks")
+    console.log("data = " + data)
     let parsed = JSON.parse(data).record
-    // console.log("parsed = " + parsed)
+    console.log("parsed = " + parsed)
 
     let guilds = Object.keys(parsed);
-    // console.log("guilds = " + guilds)
+    console.log("guilds = " + guilds)
 
     for( let i = 0,length = guilds.length; i < length; i++ ) {
         let guild = parsed[ guilds[ i ] ]
         let rankings = Object.keys(guild)
-        // console.log("rankings = " + rankings)
+        console.log("rankings = " + rankings)
 
         let guildId = guilds[i]
-        // console.log("guildId = " + guildId)
+        console.log("guildId = " + guildId)
         scores.set(guildId, new Map())
         let scores_guild = scores.get(guildId)
-        // console.log("scores_guild = " + scores_guild)
+        console.log("scores_guild = " + scores_guild)
 
         for( let j = 0,length = rankings.length; j < length; j++ ) {
             let parentRanking = guild[ rankings[ j ] ]
 
             let rankingName = rankings[j]
-            // console.log("rankingName = " + rankingName + " , parentRanking = " + parentRanking)
+            console.log("rankingName = " + rankingName + " , parentRanking = " + parentRanking)
             if (!scores_guild.get(rankingName)) {
-                // console.log("creating array for " + rankingName)
+                console.log("creating array for " + rankingName)
                 scores_guild.set(rankingName, [])
             }
             for (let i = 0; i < parentRanking.length ; i++) {
-                // console.log("parentRanking["+i+"] = " + parentRanking[i])
+                console.log("parentRanking["+i+"] = " + parentRanking[i])
                 scores_guild.get(rankingName).push(parentRanking[i])
             }
         }
     }
-    // console.log("END readRankingLinks")
+    console.log("END readRankingLinks")
     return scores
 }
 
@@ -66,7 +66,7 @@ module.exports = () => {
     req.setRequestHeader("X-Master-Key", process.env.JSONBIN_SECRET_KEY);
     req.send();
 
-    // console.log("req.responseText " + req.responseText)
+    console.log("read ranking links req.responseText " + req.responseText)
     return createLinks(req.responseText)
 
 }
