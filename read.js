@@ -9,9 +9,9 @@ function createScores(data)
 {
     var scores = new Map()
 
-    console.log("data = " + data)
+    // console.log("data = " + data)
     var parsed = JSON.parse(data).record
-    console.log("parsed = " + parsed)
+    // console.log("parsed = " + parsed)
 
     var guilds = Object.keys(parsed);
     // console.log("guilds = " + guilds)
