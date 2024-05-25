@@ -1,0 +1,12 @@
+app = 'BS_POINTS_BOT'
+primary_region = 'cdg'
+
+[build]
+
+[[services]]
+  internal_port = 3000
+  protocol = "tcp"
+
+  # Allow machines to run continuously
+  auto_start_machines = false
+  auto_stop_machines = false
